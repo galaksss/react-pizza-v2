@@ -1,7 +1,7 @@
-@import 'variables';
-@import 'libs/normalize';
+@import "variables";
+@import "libs/normalize";
 
-@import './components/all';
+@import "./components/all";
 
 body {
   background-color: $background;
@@ -14,6 +14,11 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+
+  @media (max-width: 645px) {
+    width: calc(100vw - 30px);
+    margin-top: 15px;
+  }
 }
 
 .content {
@@ -21,21 +26,61 @@ body {
 
   &__title {
     padding-left: 40px;
-    margin: 35px 0;
+    font-size: 38px;
+    font-weight: 800;
+    margin-top: 60px;
+    margin-bottom: 50px;
   }
 
   &__items {
-    padding-left: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 110px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 34px;
+    grid-row-gap: 20px;
+
+    @media (max-width: 1460px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 1120px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1280px) {
+      flex-direction: column;
+
+      .sort {
+        align-self: end;
+      }
+
+      .categories {
+        margin-bottom: 30px;
+        width: 100%;
+        overflow: auto;
+
+        ul {
+          width: clamp(300px, calc(100vw - 140px), 820px);
+        }
+      }
+    }
+    @media (max-width: 760px) {
+      .categories {
+        ul {
+          li {
+            padding: 8px 20px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -62,7 +107,7 @@ body {
   .content__title {
     display: flex;
     align-items: center;
-    font-size: 32px;
+
 
     svg {
       position: relative;
@@ -106,6 +151,10 @@ body {
         color: darken($color: #b6b6b6, $amount: 50);
       }
     }
+  }
+
+  .content__items {
+    display: block;
   }
 
   &__item {
