@@ -5,25 +5,73 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
 import { Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
+
+
+export const SearchContext = createContext();
 
 function App() {
+
+  const [searchValue, setSearchValue] = useState("");
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+      <div className="wrapper">
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home searchValue={searchValue} />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </SearchContext.Provider>
   );
 }
 
 export default App;
 
-// const items = [
+
+
+// import { useSelector, useDispatch } from "react-redux";
+// import { add, remove } from "./redux/slices/todoSlice";
+
+  // const cases = useSelector(state => state.todo.value);
+  // const dispatch = useDispatch();
+  // const [case1, setCase1] = useState("");
+
+
+/* <div className="asd">
+          <input onKeyDown={(event) => {
+            if (event.key === 'Enter' && case1) {
+              dispatch(add(case1));
+              setCase1("");
+            }
+          }} value={case1} onChange={event => setCase1(event.target.value)} type="text" placeholder="Дело..." />
+          <button
+            onClick={() => {
+              if (case1) {
+              dispatch(add(case1));
+              setCase1("");
+              }
+              console.log(case1);
+            }}>
+            Добавить дело
+          </button>
+          <div className="h1">
+            {cases.map((delo, i) => {
+              return (
+              <div key={i}>
+                <p>{delo}<button onClick={() => {
+                  dispatch(remove(delo))
+                  }}> УДАЛИТЬ ДЕЛО </button></p>
+              </div>)
+            })}
+          </div>
+        </div>
+
+
+// const items = [ */
 //   {
 //     id: 0,
 //     imageUrl: "./img/burger.png",
