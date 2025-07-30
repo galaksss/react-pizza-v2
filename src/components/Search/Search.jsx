@@ -9,19 +9,19 @@ const Search = () => {
   const [silentSearchValue, setSilentSearchValue] = useState('')
   const {searchValue, setSearchValue} = useContext(SearchContext)
 
-  const debounceRequest = useCallback(debounce(() => {
-    setSearchValue(silentSearchValue)
-  }, 1000), [])
+  const debounceRequest = useCallback(debounce((value) => {
+    setSearchValue(value)
+  }, 750), [])
 
   const onChangeInput = (event) => {
     setSilentSearchValue(event.target.value)
-    debounceRequest()
+    debounceRequest(event.target.value)
   }
   return (
     <div className={s.root}>
       <img className={s.icon} src="./search.svg" alt="Иконка поиска" />
       <input onChange={(event) => onChangeInput(event)} ref={inputRef} value={silentSearchValue} className={s.input} placeholder="Поиск пиццы..." type="text" />
-      {searchValue && <img className={s.icon2} onClick={() => {
+      {silentSearchValue && <img className={s.icon2} onClick={() => {
         setSilentSearchValue('');
         setSearchValue('');
         inputRef.current.focus();
