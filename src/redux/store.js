@@ -5,5 +5,3 @@ export const store = configureStore({
     filter
   }
 })
-
-console.log(store)

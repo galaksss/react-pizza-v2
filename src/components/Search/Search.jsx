@@ -1,17 +1,28 @@
 import { SearchContext } from "../../App";
 import s from "./Search.module.scss";
-import React, { useContext, useRef } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
+import debounce from "lodash.debounce";
 
 const Search = () => {
   
-  const inputRef = useRef(null)
+  const inputRef = useRef()
+  const [silentSearchValue, setSilentSearchValue] = useState('')
   const {searchValue, setSearchValue} = useContext(SearchContext)
 
+  const debounceRequest = useCallback(debounce(() => {
+    setSearchValue(silentSearchValue)
+  }, 1000), [])
+
+  const onChangeInput = (event) => {
+    setSilentSearchValue(event.target.value)
+    debounceRequest()
+  }
   return (
     <div className={s.root}>
       <img className={s.icon} src="./search.svg" alt="Иконка поиска" />
-      <input onChange={event => setSearchValue(event.target.value)} ref={inputRef} value={searchValue} className={s.input} placeholder="Поиск пиццы..." type="text" />
+      <input onChange={(event) => onChangeInput(event)} ref={inputRef} value={silentSearchValue} className={s.input} placeholder="Поиск пиццы..." type="text" />
       {searchValue && <img className={s.icon2} onClick={() => {
+        setSilentSearchValue('');
         setSearchValue('');
         inputRef.current.focus();
       }} src="./close.svg" alt="Иконка закрытия" />}

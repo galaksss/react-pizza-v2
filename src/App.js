@@ -7,7 +7,6 @@ import Cart from "./pages/Cart";
 import { Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 
-
 export const SearchContext = createContext();
 
 function App() {
