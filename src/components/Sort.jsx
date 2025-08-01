@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
+export const sortList = [
+  {
+    name: "популярности",
+    sortOption: "rating",
+  },
+  {
+    name: "цене (дороже)",
+    sortOption: "price",
+  },
+  {
+    name: "цене (дешевле)",
+    sortOption: "-price",
+  },
+  {
+    name: "алфавиту",
+    sortOption: "-title",
+  },
+];
+
 export default function Sort({ sortType, onChangeSort }) {
   const [isVisible, setIsVisible] = useState(false);
-  const list = [
-    {
-      name: "популярности",
-      sortOption: "rating",
-    },
-    {
-      name: "цене (дороже)",
-      sortOption: "price",
-    },
-    {
-      name: "цене (дешевле)",
-      sortOption: "-price",
-    },
-    {
-      name: "алфавиту",
-      sortOption: "-title",
-    },
-  ];
   return (
     <>
       <div className="sort" onClick={() => setIsVisible(!isVisible)}>
@@ -33,7 +34,7 @@ export default function Sort({ sortType, onChangeSort }) {
         {isVisible && (
           <div className="sort__popup">
             <ul>
-              {list.map((obj, i) => (
+              {sortList.map((obj, i) => (
                 <li key={i} onClick={() => onChangeSort(obj)} className={sortType.name === obj.name ? "active" : null}>
                   {obj.name}
                 </li>
