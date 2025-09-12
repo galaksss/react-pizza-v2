@@ -24,6 +24,22 @@ body {
 .content {
   padding: 40px 0;
 
+  &__error-info {
+    margin: 100px auto;
+    width: 580px;
+    text-align: center;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+
   &__title {
     padding-left: 40px;
     font-size: 38px;
@@ -330,11 +346,12 @@ body {
     text-align: center;
 
     h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      margin-bottom: 20px;
     }
 
     p {
+      margin-bottom: 20px;
       font-size: 18px;
       line-height: 145.4%;
       letter-spacing: 0.01em;
@@ -348,8 +365,8 @@ body {
 
     img {
       display: block;
-      width: 300px;
-      margin: 45px auto 60px;
+      width: 200px;
+      margin: 30px auto 30px;
     }
 
     .button--black {

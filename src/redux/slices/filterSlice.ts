@@ -1,6 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-const initialState = {
+type Sort = {
+  name: string;
+  sortOption: 'rating' | 'price' | 'price-' | 'title-';
+};
+
+interface FilterSliceState {
+  searchValue: string;
+  categoryName: string;
+  sortType: Sort;
+  currentPage: number;
+};
+
+
+const initialState: FilterSliceState = {
+  searchValue: '',
   categoryName: "Все",
   sortType: {
     name: "популярности",
@@ -13,6 +28,9 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    setSearchValue(state, action) {
+      state.searchValue = action.payload;
+    },
     setCategoryName(state, action) {
       state.categoryName = action.payload;
     },
@@ -30,6 +48,8 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setCategoryName, setSortType, setCurrentPage, setFilters } = filterSlice.actions;
+export const selectFilters = (state: RootState) => state.filter;
+
+export const { setSearchValue, setCategoryName, setSortType, setCurrentPage, setFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;
