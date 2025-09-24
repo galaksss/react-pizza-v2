@@ -1,18 +1,27 @@
-import React from "react";
+import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Search from "./Search/Search";
-import { selectCart } from "../redux/slices/cartSlice";
 import { useSelector } from "react-redux";
-import { countItemsQuantity } from "../redux/slices/cartSlice";
+import { countItemsQuantity, selectCart } from "../redux/slices/cart/cartSlice";
 
-import logoSvg from '../assets/img/pizza-logo.svg'
+import logoSvg from "../assets/img/pizza-logo.svg";
 
 export default function Header() {
+  const { items } = useSelector(selectCart);
   const { totalPrice } = useSelector(selectCart);
   const itemsQuantity = useSelector(countItemsQuantity);
-
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  
+  const isMounted = useRef(false);
+  useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem("cart", json);
+    }
+    isMounted.current = true
+  }, [items]);
+
   return (
     <div>
       <div className="header">
@@ -28,7 +37,7 @@ export default function Header() {
           </Link>
           {isHomePage && <Search />}
           <div className="header__cart">
-            { location.pathname !== '/cart' && (
+            {location.pathname !== "/cart" && (
               <Link to="/cart" className="button button--cart">
                 <span>{totalPrice} ₽</span>
                 <div className="button__delimiter"></div>

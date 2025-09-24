@@ -1,34 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSortType } from "../redux/slices/filterSlice";
-
-export type SortItem = {
-  name: string;
-  sortOption: string;
-};
+import React, { memo, useEffect, useRef, useState } from "react";
+import { setSortType, SortPropertyEnum } from "../redux/slices/filter/filterSlice";
+import { useAppDispatch } from "../redux/store";
+import { SortItem } from "../redux/slices/filter/types";
 
 export const sortList: SortItem[] = [
   {
     name: "популярности",
-    sortOption: "rating",
+    sortOption: SortPropertyEnum.RATING_DESC,
   },
   {
     name: "цене (дороже)",
-    sortOption: "price",
+    sortOption: SortPropertyEnum.PRICE_DESC,
   },
   {
     name: "цене (дешевле)",
-    sortOption: "-price",
+    sortOption: SortPropertyEnum.PRICE_ASC,
   },
   {
     name: "алфавиту",
-    sortOption: "-title",
+    sortOption: SortPropertyEnum.TITLE_ASC,
   },
 ];
-const Sort: React.FC<{ sortType: SortItem }> = ({ sortType }) => {
+const Sort: React.FC<{ sortType: SortItem }> = memo(({ sortType }) => {
   const [isVisible, setIsVisible] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
 
   const onChangeSort = (obj: SortItem) => {
     dispatch(setSortType(obj));
@@ -71,6 +68,6 @@ const Sort: React.FC<{ sortType: SortItem }> = ({ sortType }) => {
       </div>
     </>
   );
-};
+});
 
 export default Sort;

@@ -19,4 +19,4 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) =>
           forcePage={currentPage - 1} 
           renderOnZeroPageCount={null} />
 
-export default Pagination
+export default Pagination;

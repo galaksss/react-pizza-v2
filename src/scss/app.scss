@@ -20,6 +20,19 @@ body {
     margin-top: 15px;
   }
 }
+.disabled {
+  opacity: 0.4;
+  // pointer-events: none;
+  border-color: $orange;
+  cursor: default;
+  &:hover {
+    transform: none;
+    background-color: transparent;
+    svg path {
+      fill: $orange;
+    }
+  }
+}
 
 .content {
   padding: 40px 0;
@@ -123,7 +136,6 @@ body {
   .content__title {
     display: flex;
     align-items: center;
-
 
     svg {
       position: relative;
