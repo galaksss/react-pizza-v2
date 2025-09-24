@@ -27,10 +27,12 @@ const FullPizza: React.FC = () => {
   return (
     <>
       {!pizza ? (
-        "Загрузка..."
+        <p style={{margin: '100px 0px 650px 500px', fontSize: '72px'}}>
+          Загрузка...
+        </p>
       ) : (
         <div className="container">
-          <img src={pizza.imageUrl} alt="" />
+          <img src={pizza.imageUrl} alt="" style={{maxWidth: '400px'}}/>
           <h2>{pizza.title}</h2>
           <h4>{pizza.price} ₽</h4>
         </div>

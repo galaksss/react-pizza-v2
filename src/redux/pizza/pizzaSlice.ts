@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { RootState } from "../../store";
+import { RootState } from "../store";
 import { Pizza, PizzaSliceState } from "./types";
 
 export enum Status {

@@ -11,8 +11,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setCategoryName, setCurrentPage, setFilters, selectFilters } from "../redux/slices/filter/filterSlice";
-import { fetchPizzas, selectPizzaData } from "../redux/slices/pizza/pizzaSlice";
+import { setCategoryName, setCurrentPage, setFilters, selectFilters } from "../redux/filter/filterSlice";
+import { fetchPizzas, selectPizzaData } from "../redux/pizza/pizzaSlice";
 import { useAppDispatch } from "../redux/store";
 const Home: React.FC = () => {
   const { sortType, categoryName, currentPage, searchValue } = useSelector(selectFilters);

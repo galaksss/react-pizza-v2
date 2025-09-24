@@ -1,4 +1,4 @@
-import { CartItem } from "../redux/slices/cart/types";
+import { CartItem } from "../redux/cart/types";
 
 
 const totalPriceRecount = (items: CartItem[]) => {
