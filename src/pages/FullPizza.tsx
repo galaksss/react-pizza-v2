@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const FullPizza: React.FC = () => {
   const navigate = useNavigate();
@@ -27,14 +26,15 @@ const FullPizza: React.FC = () => {
   return (
     <>
       {!pizza ? (
-        <p style={{margin: '100px 0px 650px 500px', fontSize: '72px'}}>
-          Загрузка...
-        </p>
+        <h1 style={{ margin: "100px 0 700px 500px" }}>Идет загрузка...</h1>
       ) : (
         <div className="container">
-          <img src={pizza.imageUrl} alt="" style={{maxWidth: '400px'}}/>
+          <img src={pizza.imageUrl} alt="" style={{ maxWidth: "400px" }} />
           <h2>{pizza.title}</h2>
           <h4>{pizza.price} ₽</h4>
+          <Link to="/">
+            <button className="button button--outline button-add">Назад</button>
+          </Link>
         </div>
       )}
     </>

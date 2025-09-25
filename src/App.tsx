@@ -1,15 +1,18 @@
 import "./scss/app.scss";
+import { lazy } from '@loadable/component';
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 
-const Cart = lazy(() => import("../src/pages/Cart"));
-const FullPizza = lazy(() => import("../src/pages/FullPizza"));
-const NotFound = lazy(() => import("../src/pages/NotFound"));
+const Cart = lazy(() => import(/* webpackChunkName: 'Cart' */ "../src/pages/Cart"))
+const FullPizza = lazy(() => import(/* webpackChunkName: 'FullPizza' */ "../src/pages/FullPizza"));
+const NotFound = lazy(() => import(/* webpackChunkName: 'NotFound' */ "../src/pages/NotFound"));
 // export const SearchContext = createContext();
 
 function App() {
+
+
   return (
     // <SearchContext.Provider value={{ searchValue, setSearchValue }}>
     <Routes>
@@ -18,7 +21,7 @@ function App() {
         <Route
           path="pizza/:id"
           element={
-            <Suspense fallback={<h1 style={{ margin: "100px 0 700px 400px" }}>Идет загрузка...</h1>}>
+            <Suspense fallback={<h1 style={{ margin: "100px 0 700px 500px" }}>Идет загрузка...</h1>}>
               <FullPizza />
             </Suspense>
           }
@@ -34,7 +37,7 @@ function App() {
         <Route
           path="*"
           element={
-            <Suspense fallback={<h1 style={{ margin: "100px 0 700px 400px" }}>Идет загрузка...</h1>}>
+            <Suspense fallback={<h1 style={{ margin: "100px 0 700px 500px" }}>Идет загрузка...</h1>}>
               <NotFound />
             </Suspense>
           }
