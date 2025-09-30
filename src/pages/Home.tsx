@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import qs from "qs";
-import { Categories, PizzaBlock, PizzaBlockProps, Skeleton, Pagination, Sort, sortList } from "../components";
+import { Categories, PizzaBlock, PizzaBlockProps, Skeleton, Pagination, Sort, sortList } from "../export";
 
 import { useEffect } from "react";
 import { useSelector } from "react-redux";

@@ -1,5 +1,4 @@
-import React from "react";
-import s from "./NotFoundBlock.module.scss"
+import s from "../../scss/components/NotFoundBlock.module.scss"
 const NotFoundBlock = () => {
   return (
     <div className={s.root}>
