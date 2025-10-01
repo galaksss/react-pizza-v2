@@ -1,10 +1,10 @@
-.root {
+.search {
   position: relative;
   left: -100px;
 
 }
 
-.input {
+.search__input {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   padding: 12px 20px;
@@ -21,7 +21,7 @@
 
 }
 
-.icon {
+.search__icon1 {
   width: 22px;
   height: 22px;
   opacity: 0.3;
@@ -30,7 +30,7 @@
   top: 13px;
 }
 
-.icon2 {
+.search__icon2 {
   cursor: pointer;
   position: absolute;
   width: 22px;

@@ -1,4 +1,3 @@
-import s from "../../scss/components/Search.module.scss";
 import { useCallback, useRef, useState } from "react";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
@@ -20,12 +19,12 @@ const Search: React.FC = () => {
     debounceRequest(event.target.value);
   };
   return (
-    <div className={s.root}>
-      <img className={s.icon} src="./search.svg" alt="Иконка поиска" />
-      <input onChange={event => onChangeInput(event)} ref={inputRef} value={silentSearchValue} className={s.input} placeholder="Поиск пиццы..." type="text" />
+    <div className="search">
+      <img className="search__icon1" src="./search.svg" alt="Иконка поиска" />
+      <input onChange={event => onChangeInput(event)} ref={inputRef} value={silentSearchValue} className="search__input" placeholder="Поиск пиццы..." type="text" />
       {silentSearchValue && (
         <img
-          className={s.icon2}
+          className="search__icon2"
           onClick={() => {
             setSilentSearchValue("");
             dispatch(setSearchValue(""));

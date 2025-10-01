@@ -6,5 +6,5 @@ export { default as CartItemBlock } from '../components/CartItemBlock';
 export { default as CartEmpty } from '../components/CartEmpty';
 export { default as Search } from '../components/Search';
 export { default as Pagination } from '../components/Pagination';
-export { default as NotFoundBlock } from '../components/NotFoundBlock/NotFoundBlock';
+export { default as NotFoundBlock } from '../components/NotFoundBlock';
 export { default as Sort, sortList } from '../components/Sort';
