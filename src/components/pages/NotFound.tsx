@@ -1,4 +1,4 @@
-import { NotFoundBlock } from "../export";
+import { NotFoundBlock } from "../../export";
 
 const NotFound: React.FC = () => <NotFoundBlock />;
 

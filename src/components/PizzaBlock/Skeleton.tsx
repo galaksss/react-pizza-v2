@@ -1,9 +1,9 @@
-import React from "react";
 import ContentLoader from "react-content-loader";
 
 const Skeleton = () => (
   <ContentLoader
     className="pizza-block"
+    style={{ marginBottom: '15px' }}
     speed={2}
     width={280}
     height={500}

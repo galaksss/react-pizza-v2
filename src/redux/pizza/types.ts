@@ -1,6 +1,6 @@
 import { Status } from "./pizzaSlice";
 
-export type Pizza = {
+export interface Pizza {
   id: string;
   title: string;
   price: number;
@@ -14,4 +14,12 @@ export type Pizza = {
 export interface PizzaSliceState {
   items: Pizza[];
   status: Status;
+}
+
+export interface FetchPizzasParams {
+  sortOptionEdited: string;
+  categoryName: string;
+  currentPage: number;
+  sortOrder: string;
+  searchValue: string;
 }

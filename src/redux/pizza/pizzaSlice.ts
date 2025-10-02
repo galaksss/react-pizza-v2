@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../store";
-import { Pizza, PizzaSliceState } from "./types";
+import { Pizza, PizzaSliceState, FetchPizzasParams } from "./types";
 
 export enum Status {
   LOADING = "loading",
@@ -51,16 +51,14 @@ const pizzaSlice = createSlice({
 });
 
 
-export interface FetchPizzasParams {
-  sortOptionEdited: string;
-  categoryName: string;
-  currentPage: number;
-  sortOrder: string;
-  searchValue: string;
-}
+
 export const fetchPizzas = createAsyncThunk<Pizza[], FetchPizzasParams>("pizza/fetchPizzaStatus", async params => {
-  const { sortOrder, sortOptionEdited, categoryName, currentPage, searchValue } = params;
-  const { data } = await axios.get<Pizza[]>(`https://685d87c1769de2bf0860fbc7.mockapi.io/items?page=${currentPage}&limit=3&sortBy=${sortOptionEdited + `${"&order=" + sortOrder}`}${categoryName && categoryName !== "Все" ? "&category=" + categoryName : ""}${searchValue ? "&search=" + searchValue : ""}`);
+  let { sortOrder, sortOptionEdited, categoryName, currentPage, searchValue } = params;
+  if (searchValue) {
+    currentPage = 1
+  }
+  const { data } = await axios.get<Pizza[]>(`https://685d87c1769de2bf0860fbc7.mockapi.io/items?page=${currentPage}&limit=4&sortBy=${sortOptionEdited + `${"&order=" + sortOrder}`}${categoryName && categoryName !== "Все" ? "&category=" + categoryName : ""}${searchValue ? "&search=" + searchValue : ""}`);
+
   return data;
 });
 

@@ -1,14 +1,14 @@
 import { useCallback, useRef } from "react";
 import qs from "qs";
-import { Categories, PizzaBlock, PizzaBlockProps, Skeleton, Pagination, Sort, sortList } from "../export";
+import { Categories, PizzaBlock, PizzaBlockProps, Skeleton, Pagination, Sort, sortList } from "../../export";
 
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setCategoryName, setCurrentPage, setFilters, selectFilters } from "../redux/filter/filterSlice";
-import { fetchPizzas, selectPizzaData } from "../redux/pizza/pizzaSlice";
-import { useAppDispatch } from "../redux/store";
+import { setCategoryName, setCurrentPage, setFilters, selectFilters } from "../../redux/filter/filterSlice";
+import { fetchPizzas, selectPizzaData } from "../../redux/pizza/pizzaSlice";
+import { useAppDispatch } from "../../redux/store";
 const Home: React.FC = () => {
   const { sortType, categoryName, currentPage, searchValue } = useSelector(selectFilters);
   const { items, status } = useSelector(selectPizzaData);
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
     // .filter(obj => obj.title.toLowerCase().includes(searchValue.toLowerCase()))
     .map((obj: PizzaBlockProps) => <PizzaBlock key={obj.id} {...obj} />);
 
-  const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
+  const skeleton = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
   return (
     <div className="container">
       <div className="content__top">

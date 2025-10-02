@@ -21,7 +21,6 @@ export default function Header() {
     }
     isMounted.current = true
   }, [items]);
-  console.log(items)
 
   return (
     <div>
